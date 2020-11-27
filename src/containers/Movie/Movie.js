@@ -7,7 +7,6 @@ import "./Movie.css";
 class Movie extends Component {
   state = {
     lists: [],
-    clickedListId: null,
   };
 
   componentDidMount() {
