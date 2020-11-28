@@ -1,4 +1,4 @@
-.List {
+.MovieDetail {
   width: 100%;
   padding: 16px;
   text-align: center;
@@ -10,12 +10,7 @@
   display: flex;
 }
 
-.List:hover,
-.List:active {
+.MovieDetail:hover,
+.MovieDetail:active {
   background-color: #c0ddf5;
-}
-
-.Author {
-  margin: 16px 0;
-  color: #ccc;
 }
