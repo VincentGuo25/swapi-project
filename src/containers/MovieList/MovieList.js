@@ -13,6 +13,18 @@ export default function MovieList() {
   }, []);
 
   const movieLists = movieDetails.map((movieDetail) => {
+    const getCharactersDetails = () => {
+      const charss = movieDetail.characters.map((data) => {
+        axios.get(data).then((response) => {
+          console.log(response.data.name);
+          const cc = response.data.name;
+          return cc;
+        });
+      });
+
+      return charss;
+    };
+
     return (
       <div key={movieDetail.episode_id}>
         <MovieDetail
@@ -22,7 +34,7 @@ export default function MovieList() {
           director={movieDetail.director}
           producer={movieDetail.producer}
           date={movieDetail.release_date}
-          characters={movieDetail.characters}
+          characters={getCharactersDetails()}
         />
       </div>
     );
