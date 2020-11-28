@@ -16,11 +16,17 @@ class MovieDetail extends Component {
   getCharactersDetails() {
     const charss = this.props.characters;
     // for (let q = 0; q <= charss.length; q++) {
-    for (let i = 0; i <= charss.length; i++) {
-      axios.get(charss[i]).then((response) => {
+    // for (let i = 0; i <= charss.length; i++) {
+    //   axios.get(charss[i]).then((response) => {
+    //     console.log(response.data.name);
+    //   });
+    // }
+
+    charss.map((data) => {
+      axios.get(data).then((response) => {
         console.log(response.data.name);
       });
-    }
+    });
 
     // }
     // const charss = this.props.characters[i];

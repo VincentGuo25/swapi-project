@@ -14,9 +14,8 @@ export default function MovieList() {
 
   const movieLists = movieDetails.map((movieDetail) => {
     return (
-      <div>
+      <div key={movieDetail.episode_id}>
         <MovieDetail
-          key={movieDetail.episode_id}
           title={movieDetail.title}
           episode={movieDetail.episode_id}
           opening={movieDetail.opening_crawl}
