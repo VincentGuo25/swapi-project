@@ -21,17 +21,17 @@ class MovieDetail extends Component {
         console.log(response.data.name);
       });
     }
+
+    // }
+    // const charss = this.props.characters[i];
+    // for (let i = 0; i <= charss.length; i++) {
+    //   axios.get("https://swapi.dev/api/people/" + i).then((response) => {
+    //     console.log(charss);
+    //   });
+    // }
+
+    // console.log(charss);
   }
-
-  // }
-  // const charss = this.props.characters[i];
-  // for (let i = 0; i <= charss.length; i++) {
-  //   axios.get("https://swapi.dev/api/people/" + i).then((response) => {
-  //     console.log(charss);
-  //   });
-  // }
-
-  // console.log(charss);
 
   render() {
     return (
@@ -46,7 +46,7 @@ class MovieDetail extends Component {
             Director : {this.props.director} <br />
             Producer : {this.props.producer} <br />
             Date : {this.props.date} <br />
-            Characters : {}
+            Characters : {this.getCharactersDetails()}
           </h3>
         )}
       </div>
