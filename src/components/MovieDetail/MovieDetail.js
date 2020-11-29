@@ -16,6 +16,7 @@ class MovieDetail extends Component {
   getCharactersDetails() {
     const charss = this.props.characters;
     // for (let q = 0; q <= charss.length; q++) {
+<<<<<<< HEAD
     // for (let i = 0; i <= charss.length; i++) {
     //   axios.get(charss[i]).then((response) => {
     //     console.log(response.data.name);
@@ -24,11 +25,15 @@ class MovieDetail extends Component {
 
     let pp = charss.map((data) => {
       axios.get(data).then((response) => {
+=======
+    for (let i = 0; i <= charss.length; i++) {
+      axios.get(charss[i]).then((response) => {
+>>>>>>> parent of fb89b4e (map)
         console.log(response.data.name);
         const cc = response.data.name;
         return cc;
       });
-    });
+    }
 
     // }
     // const charss = this.props.characters[i];

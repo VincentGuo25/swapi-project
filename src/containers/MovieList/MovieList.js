@@ -33,8 +33,9 @@ export default function MovieList() {
     // return <h4>gg{lis}</h4>;
 
     return (
-      <div key={movieDetail.episode_id}>
+      <div>
         <MovieDetail
+          key={movieDetail.episode_id}
           title={movieDetail.title}
           episode={movieDetail.episode_id}
           opening={movieDetail.opening_crawl}
