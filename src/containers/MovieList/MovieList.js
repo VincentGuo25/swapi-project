@@ -14,16 +14,23 @@ export default function MovieList() {
 
   const movieLists = movieDetails.map((movieDetail) => {
     const getCharactersDetails = () => {
-      const charss = movieDetail.characters.map((data) => {
+      movieDetail.characters.map((data) => {
+        // axios.get(data).then((response) => {
+        //   const cc = response.data.name;
+        //   console.log(cc);
+        //   return cc;
+        // });
         axios.get(data).then((response) => {
-          console.log(response.data.name);
           const cc = response.data.name;
+          // console.log(lis);
+          // return <h4>{cc}</h4>;
+          // lis = cc;
+          // console.log(lis);
           return cc;
         });
       });
 
-      return charss;
-    };
+    // return <h4>gg{lis}</h4>;
 
     return (
       <div key={movieDetail.episode_id}>
@@ -38,7 +45,7 @@ export default function MovieList() {
         />
       </div>
     );
-  });
+  };
 
   return (
     <div>
