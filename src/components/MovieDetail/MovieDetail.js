@@ -30,7 +30,7 @@ class MovieDetail extends Component {
 
       setTimeout(() => {
         this.setState({ loading: false });
-      }, 120);
+      }, 400);
     });
   }
 
