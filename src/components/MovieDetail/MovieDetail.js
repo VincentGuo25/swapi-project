@@ -7,6 +7,7 @@ class MovieDetail extends Component {
   state = {
     showMovieDetail: false,
     charName: [],
+    loading: true,
   };
 
   movieListClicked = () => {
@@ -26,6 +27,7 @@ class MovieDetail extends Component {
           <li key={response.data.name}>{response.data.name}</li>
         );
       });
+      this.setState({ loading: false });
     });
   }
 
@@ -36,15 +38,19 @@ class MovieDetail extends Component {
           <h2>{this.props.title}</h2>
         ) : (
           <div>
-            <h3>
-              Title : {this.props.title} <br />
-              Episode : {this.props.episode} <br />
-              {this.props.opening} <br />
-              Director : {this.props.director} <br />
-              Producer : {this.props.producer} <br />
-              Date : {this.props.date} <br />
-              Characters : {this.state.charName} <br />
-            </h3>
+            {this.state.loading ? (
+              <h3>Data is Loading...</h3>
+            ) : (
+              <h3>
+                Title : {this.props.title} <br />
+                Episode : {this.props.episode} <br />
+                {this.props.opening} <br />
+                Director : {this.props.director} <br />
+                Producer : {this.props.producer} <br />
+                Date : {this.props.date} <br />
+                Characters : {this.state.charName} <br />
+              </h3>
+            )}
           </div>
         )}
       </div>
