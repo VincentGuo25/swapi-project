@@ -27,7 +27,10 @@ class MovieDetail extends Component {
           <li key={response.data.name}>{response.data.name}</li>
         );
       });
-      this.setState({ loading: false });
+
+      setTimeout(() => {
+        this.setState({ loading: false });
+      }, 120);
     });
   }
 
