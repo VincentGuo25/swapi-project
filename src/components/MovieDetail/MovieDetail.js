@@ -19,40 +19,14 @@ class MovieDetail extends Component {
 
   getCharactersDetails() {
     const charsAPILink = this.props.characters;
-    // for (let q = 0; q <= charss.length; q++) {
-    // for (let i = 0; i <= charsAPILink.length; i++) {
-    //   axios.get(charsAPILink[i]).then((response) => {
-    //     console.log(response.data.name);
-    //     this.setState({ charName: response.data.name });
-    //   });
-    // }
-
-    // const data = charss;
-
-    // const pp = charss.map((data) => {
-    //   axios.get(data).then((response) => {
-    //     data = response.data.name;
-    //     console.log(data);
-    //     return data;
-    //   });
-    // });
 
     charsAPILink.map(async (data) => {
       await axios.get(data).then((response) => {
-        console.log(response.data.name);
-        this.setState({ charName: response.data.name });
+        this.state.charName.push(
+          <li key={response.data.name}>{response.data.name}</li>
+        );
       });
     });
-
-    // }
-    // const charss = this.props.characters[i];
-    // for (let i = 0; i <= charss.length; i++) {
-    //   axios.get("https://swapi.dev/api/people/" + i).then((response) => {
-    //     console.log(charss);
-    //   });
-    // }
-
-    // console.log(charss);
   }
 
   render() {
@@ -69,18 +43,8 @@ class MovieDetail extends Component {
               Director : {this.props.director} <br />
               Producer : {this.props.producer} <br />
               Date : {this.props.date} <br />
-              Characters :<li>{this.state.charName}</li>
+              Characters : {this.state.charName} <br />
             </h3>
-
-            {/* <ul>{this.props.characters.map((data) => {
-                axios.get(data).then((response) => {
-                  console.log(response.data.name);
-                  const cc = response.data.name;
-                  return <h2>gg</h2>
-                });
-                // return gg;
-              })}
-              </ul> */}
           </div>
         )}
       </div>
