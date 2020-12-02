@@ -3,7 +3,7 @@ import axios from "axios";
 
 import MovieDetail from "../../components/MovieDetail/MovieDetail";
 
-export default function MovieList() {
+function MovieList() {
   const [movieDetails, setMovieDetails] = useState([]);
 
   useEffect(() => {
@@ -34,3 +34,5 @@ export default function MovieList() {
     </div>
   );
 }
+
+export default MovieList;
