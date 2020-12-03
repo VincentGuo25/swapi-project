@@ -1,64 +1,52 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import "./MovieDetail.css";
 
-class MovieDetail extends Component {
-  state = {
-    showMovieDetail: false,
-    charName: [],
-    loading: true,
-  };
+function MovieDetail(props) {
+  const [showMovieDetail, setShowMovieDetail] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [charAPILink] = useState(props.characters);
+  const [charName] = useState([]);
 
-  movieListClicked = () => {
-    this.setState({ showMovieDetail: !this.state.showMovieDetail });
-  };
-
-  componentDidMount() {
-    this.getCharactersDetails();
-  }
-
-  getCharactersDetails() {
-    const charsAPILink = this.props.characters;
-
-    charsAPILink.map(async (data) => {
+  useEffect(() => {
+    charAPILink.map(async (data) => {
       await axios.get(data).then((response) => {
-        this.state.charName.push(
-          <li key={response.data.name}>{response.data.name}</li>
-        );
+        charName.push(<li key={response.data.name}>{response.data.name}</li>);
       });
-
       setTimeout(() => {
-        this.setState({ loading: false });
-      }, 400);
+        setLoading(false);
+      }, 1000);
     });
-  }
+  }, []);
 
-  render() {
-    return (
-      <div className="MovieDetail" onClick={this.movieListClicked}>
-        {!this.state.showMovieDetail ? (
-          <h2>{this.props.title}</h2>
-        ) : (
-          <div>
-            {this.state.loading ? (
-              <h3>Data is Loading...</h3>
-            ) : (
-              <h3>
-                Title : {this.props.title} <br />
-                Episode : {this.props.episode} <br />
-                {this.props.opening} <br />
-                Director : {this.props.director} <br />
-                Producer : {this.props.producer} <br />
-                Date : {this.props.date} <br />
-                Characters : {this.state.charName} <br />
-              </h3>
-            )}
-          </div>
-        )}
-      </div>
-    );
-  }
+  const movieListClicked = () => {
+    setShowMovieDetail(!showMovieDetail);
+  };
+
+  return (
+    <div className="MovieDetail" onClick={() => movieListClicked()}>
+      {!showMovieDetail ? (
+        <h2>{props.title}</h2>
+      ) : (
+        <div>
+          {loading ? (
+            <h3>Data is Loading... Please Wait</h3>
+          ) : (
+            <h3>
+              Title : {props.title} <br />
+              Episode : {props.episode} <br />
+              {props.opening} <br />
+              Director : {props.director} <br />
+              Producer : {props.producer} <br />
+              Date : {props.date} <br />
+              Characters : {charName} <br />
+            </h3>
+          )}
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default MovieDetail;

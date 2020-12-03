@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 oldMovie.js
-MovieDetailFunction.js
+MovieDetailClass.js
 
 # testing
 /coverage
