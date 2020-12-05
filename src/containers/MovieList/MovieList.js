@@ -7,12 +7,16 @@ function MovieList() {
   const [movieDetails, setMovieDetails] = useState([]);
 
   useEffect(() => {
+    fetchDataAPI();
+  }, []);
+
+  const fetchDataAPI = () => {
     axios.get("https://swapi.dev/api/films/").then((response) => {
       setMovieDetails(response.data.results);
     });
-  }, []);
+  };
 
-  const movieLists = movieDetails.map((movieDetail) => {
+  const showMovieLists = movieDetails.map((movieDetail) => {
     return (
       <div key={movieDetail.episode_id}>
         <MovieDetail
@@ -23,16 +27,16 @@ function MovieList() {
           producer={movieDetail.producer}
           date={movieDetail.release_date}
           characters={movieDetail.characters}
+          planets={movieDetail.planets}
+          starships={movieDetail.starships}
+          vehicles={movieDetail.vehicles}
+          species={movieDetail.species}
         />
       </div>
     );
   });
 
-  return (
-    <div>
-      <div>{movieLists}</div>
-    </div>
-  );
+  return showMovieLists;
 }
 
 export default MovieList;

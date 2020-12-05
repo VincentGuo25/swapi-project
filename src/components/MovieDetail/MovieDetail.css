@@ -1,16 +1,28 @@
 .MovieDetail {
-  width: 100%;
+  width: 90%;
   padding: 16px;
-  text-align: center;
   border: 1px solid #eee;
-  box-shadow: 0 2px 3px #ccc;
+  /* box-shadow: 0 2px 3px #ccc; */
   margin: 10px;
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
+  color: white;
+  border-color: yellow;
+  border-radius: 15px;
+  border-width: 5px;
+  margin: auto;
 }
 
 .MovieDetail:hover,
 .MovieDetail:active {
-  background-color: #c0ddf5;
+  background-color: white;
+  color: black;
+}
+
+table,
+th,
+td {
+  border-spacing: 15px;
+  vertical-align: top;
 }
