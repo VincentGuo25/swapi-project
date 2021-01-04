@@ -1,17 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 
-import MovieList from "./containers/MovieList/MovieList";
-import Logo from "./components/Logo/Logo";
+import MovieList from "./components/MovieList";
+import LogoImage from "./assets/images/logoStarWars.png";
+import "./App.css";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Logo />
-        <MovieList />
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <img src={LogoImage} className="Logo" alt="" />
+      <MovieList />
+    </div>
+  );
 }
 
 export default App;

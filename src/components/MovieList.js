@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import MovieDetail from "../../components/MovieDetail/MovieDetail";
+import MovieDetail from "./MovieDetail/MovieDetail";
 
 function MovieList() {
   const [movieDetails, setMovieDetails] = useState([]);
@@ -10,8 +10,8 @@ function MovieList() {
     fetchDataAPI();
   }, []);
 
-  const fetchDataAPI = () => {
-    axios.get("https://swapi.dev/api/films/").then((response) => {
+  const fetchDataAPI = async () => {
+    await axios.get("https://swapi.dev/api/films/").then((response) => {
       setMovieDetails(response.data.results);
     });
   };
