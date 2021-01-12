@@ -6,11 +6,11 @@ import "./MovieDetail.css";
 function MovieDetail(props) {
   const [showMovieDetail, setShowMovieDetail] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [charAPILink] = useState(props.characters);
-  const [planetAPILink] = useState(props.planets);
-  const [starshipAPILink] = useState(props.starships);
-  const [vehiclesAPILink] = useState(props.vehicles);
-  const [speciesAPILink] = useState(props.species);
+  const [charAPI] = useState(props.characters);
+  const [planetAPI] = useState(props.planets);
+  const [starshipAPI] = useState(props.starships);
+  const [vehiclesAPI] = useState(props.vehicles);
+  const [speciesAPI] = useState(props.species);
   const [charName] = useState([]);
   const [planetName] = useState([]);
   const [starshipName] = useState([]);
@@ -18,58 +18,25 @@ function MovieDetail(props) {
   const [speciesName] = useState([]);
 
   useEffect(() => {
-    fetchCharData();
-    fetchPlanetData();
-    fetchStarshipData();
-    fetchVehiclesData();
-    fetchSpeciesData();
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    fetchAllData();
   }, []);
 
-  const fetchCharData = () => {
-    charAPILink.map(async (data) => {
-      await axios.get(data).then((response) => {
-        charName.push(<li key={response.data.name}>{response.data.name}</li>);
-      });
-      setTimeout(() => {
-        setLoading(false);
-      }, 2000);
-    });
+  const fetchAllData = () => {
+    fetchData(charAPI, charName);
+    fetchData(planetAPI, planetName);
+    fetchData(starshipAPI, starshipName);
+    fetchData(vehiclesAPI, vehiclesName);
+    fetchData(speciesAPI, speciesName);
   };
 
-  const fetchPlanetData = () => {
-    planetAPILink.map(async (data) => {
+  const fetchData = (API, nameList) => {
+    API.map(async (data) => {
       await axios.get(data).then((response) => {
-        planetName.push(<li key={response.data.name}>{response.data.name}</li>);
-      });
-    });
-  };
-
-  const fetchStarshipData = () => {
-    starshipAPILink.map(async (data) => {
-      await axios.get(data).then((response) => {
-        starshipName.push(
-          <li key={response.data.name}>{response.data.name}</li>
-        );
-      });
-    });
-  };
-
-  const fetchVehiclesData = () => {
-    vehiclesAPILink.map(async (data) => {
-      await axios.get(data).then((response) => {
-        vehiclesName.push(
-          <li key={response.data.name}>{response.data.name}</li>
-        );
-      });
-    });
-  };
-
-  const fetchSpeciesData = () => {
-    speciesAPILink.map(async (data) => {
-      await axios.get(data).then((response) => {
-        speciesName.push(
-          <li key={response.data.name}>{response.data.name}</li>
-        );
+        nameList.push(<li key={response.data.name}>{response.data.name}</li>);
       });
     });
   };
